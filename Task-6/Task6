@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event handling</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-image:linear-gradient(rgba(0, 0, 0, 0.157),rgba(0, 0, 0, 0.157)),url(https://i.pinimg.com/originals/e0/a5/30/e0a530fb4ece2174390452ec2e59360b.jpg);
+            background-size: cover;
+        }
+        #myP{
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            border: 2px solid black;
+        }
+        .img{
+            width: 44%;
+            float: left;
+            border: 2px solid black;
+            height: 40vh;
+            margin: 10px 20px;
+            padding: 10px;
+        }
+        .img p{
+            font-size: 1.2em;
+            font-family: cursive;
+        }
+        .cord{
+            width: 45%;
+            float: left;
+            height: 40vh;
+            margin: 10px 20px;
+            padding: 10px;
+            border: 2px solid black;
+            font-family: cursive;
+        }
+        #demo{
+            float: right;
+            width: fit-content;
+            margin-top: 180px;
+            background-color: aquamarine;
+        }
+        .lef{
+            width: 50%;
+            height: 20vh;
+            float: left;
+            border: 2px solid black;
+            margin: 10px 20px;
+            padding: 20px;
+            font-family: cursive;  
+        }
+        .r{
+            margin-left: 20px;
+            float: left;
+        }
+        .l{
+            float: left;
+        }
+        .rig{
+            width: 35%;
+            height: 20vh;
+            border: 2px solid black;
+            margin: 10px 20px;
+            padding: 20px;
+            float: left;
+            font-family: cursive;
+
+        }
+
+        .rig p{
+            float: left;
+        }
+        .ri{
+            margin-left: 30px;
+            float: left;
+        }
+        #demo1{
+            background-color: cadetblue;
+        }
+        #demo2{
+            background-color: darkmagenta;
+            color: white;
+        }
+    </style>
+  </head>
+  <body>
+
+    <!--1-->
+    <p id="myP" onmousedown="mouseDown()" onmouseup="mouseUp()">
+      Click This!
+    </p>
+
+    <!--2-->
+    <div class="img">
+        <p>Mouse enter and leave</p>
+        <center>
+        <img
+        onmouseenter="bigImg(this)"
+        onmouseleave="normalImg(this)"
+        border="0"
+        src="https://cdn.dribbble.com/users/1807017/screenshots/5459757/smiley-cheese-gif.gif"
+        alt="Smiley"
+        width="200"
+        height="200"
+        />
+        </center>
+    </div>
+    
+
+    <!--3-->
+    <div
+        class="cord";
+      onmousemove="myFunction(event)"
+      onmouseout="clearCoor()"
+    >
+      Mouse over in the rectangle box, and get the coordinates of your mouse
+      pointer.
+       <p id="demo" ></p>
+    </div>
+   
+    <div class="lef">
+        <!--4-->
+        <div class="l">
+            <p>On focus in background color</p><br>
+        Enter your name: <input type="text" onfocusin="myFunction1(this)" /><br><br>
+        </div>
+        
+        <!--5-->
+        <div class="r">
+             <p>On focus out to Upper Case!</p><br>
+            Enter your name: <input type="text" id="fname" onfocusout="myFunction2()" />
+            </div>
+           
+        </div>
+     <div class="rig">
+         <!--6-->
+        <div class="l">
+            <button onclick="myFunction3()">Click me</button><br><br>
+            <p id="demo1"></p>
+        </div>
+
+        <!--7-->
+         <div class="ri">
+            <p ondblclick="myFunction4()">Double-click this!!!</p><br><br>
+            <p id="demo2"></p>
+        </div>
+    </div>
+   
+  </body>
+  <script>
+      //1
+        function mouseDown() {
+        document.getElementById("myP").style.backgroundColor = "red";
+        }
+        function mouseUp() {
+        document.getElementById("myP").style.backgroundColor = "green";
+        }
+
+        //2
+        function bigImg(x) {
+        x.style.height = "210px";
+        x.style.width = "400px";
+        }
+        function normalImg(x) {
+        x.style.height = "180px";
+        x.style.width = "180px";
+        }
+
+        //3
+        function myFunction(e) {
+        var x = e.clientX;
+        var y = e.clientY;
+        var coor = "Coordinates: (" + x + "," + y + ")";
+        document.getElementById("demo").innerHTML = coor;
+        }
+        function clearCoor() {
+        document.getElementById("demo").innerHTML = "";
+        }
+
+        //4
+        function myFunction1(x) {
+        x.style.background = "yellow";
+        }
+
+        //5
+        function myFunction2() {
+        var x = document.getElementById("fname");
+        x.value = x.value.toUpperCase();
+        }
+
+        //6
+        function myFunction3() {
+        document.getElementById("demo1").innerHTML = "You Clicked the Button";
+        }
+
+        //7
+        function myFunction4() {
+        document.getElementById("demo2").innerHTML = "You Double-Clicked the Text";
+        }
+  </script>
+</html>
